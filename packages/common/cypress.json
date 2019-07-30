@@ -1,0 +1,5 @@
+{
+  "baseUrl": "http://localhost:6006",
+  "testFiles": "**/*.spec.tsx",
+  "integrationFolder": "src"
+}
