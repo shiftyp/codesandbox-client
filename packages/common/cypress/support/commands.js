@@ -36,6 +36,9 @@ const convertStoryPathToId = path => {
 
   return ret;
 };
-Cypress.Commands.overwrite('visit', (originalFn, storyPath) => {
-  return originalFn(`iframe.html?id=${convertStoryPathToId(storyPath)}`);
+Cypress.Commands.overwrite('visit', (originalFn, storyPath, options) => {
+  return originalFn(
+    `iframe.html?id=${convertStoryPathToId(storyPath, options)}`,
+    options
+  );
 });
