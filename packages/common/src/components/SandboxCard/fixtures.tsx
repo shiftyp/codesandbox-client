@@ -1,4 +1,6 @@
-import { Sandbox } from './';
+import * as React from 'react';
+import { ThemeDecorator } from '../../stories/decorators';
+import SandboxCard, { Sandbox, Props } from '.';
 
 export const sandbox = (config: Partial<Sandbox> = {}): Sandbox => ({
   id: '1234',
@@ -120,3 +122,57 @@ export const sandboxWithUndefinedScreenshotUrl = (
   sandbox({
     screenshot_url: undefined,
   });
+
+export type FakeSandboxCard = React.ComponentType<Partial<Props>>;
+
+export const Basic: FakeSandboxCard = props => (
+  <SandboxCard sandbox={sandbox()} selectSandbox={() => {}} {...props} />
+);
+
+export const Small: FakeSandboxCard = props => (
+  <Basic small={true} {...props} />
+);
+
+export const NoHeight: FakeSandboxCard = props => (
+  <Basic noHeight={true} {...props} />
+);
+
+export const DefaultHeight: FakeSandboxCard = props => (
+  <Basic defaultHeight={500} {...props} />
+);
+
+export const NoMargin: FakeSandboxCard = props => (
+  <Basic noMargin={true} {...props} />
+);
+
+export const Popular: FakeSandboxCard = props => (
+  <Basic sandbox={popularSandbox()} {...props} />
+);
+
+export const ManyTags: FakeSandboxCard = props => (
+  <Basic sandbox={sandboxWithManyTags()} {...props} />
+);
+
+export const LongTitle: FakeSandboxCard = props => (
+  <Basic sandbox={sandboxWithLongTitle()} {...props} />
+);
+
+export const LongDescription: FakeSandboxCard = props => (
+  <Basic sandbox={sandboxWithLongDescription()} {...props} />
+);
+
+export const NullAuthor: FakeSandboxCard = props => (
+  <Basic sandbox={sandboxWithNullAuthor()} {...props} />
+);
+
+export const UndefinedAuthor: FakeSandboxCard = props => (
+  <Basic sandbox={sandboxWithUndefinedAuthor()} {...props} />
+);
+
+export const NullScreenshotUrl: FakeSandboxCard = props => (
+  <Basic sandbox={sandboxWithNullScreenshotUrl()} {...props} />
+);
+
+export const UndefinedScreenshotUrl: FakeSandboxCard = props => (
+  <Basic sandbox={sandboxWithUndefinedScreenshotUrl()} {...props} />
+);
