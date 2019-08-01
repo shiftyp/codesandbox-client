@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { render } from 'enzyme';
 import * as Fixtures from './fixtures';
 import { renderWithTheme } from '../../test/renderers';
 
