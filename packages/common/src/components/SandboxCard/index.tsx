@@ -137,15 +137,15 @@ export default class SandboxCard extends React.PureComponent<Props> {
 
         <SandboxStats>
           <Stats>
-            <li>
+            <li data-test="view_count">
               <EyeIcon />
               {kFormatter(sandbox.view_count)}
             </li>
-            <li>
+            <li data-test="fork_count">
               <ForkIcon />
               {kFormatter(sandbox.fork_count)}
             </li>
-            <li>
+            <li data-test="like_count">
               <LikeIcon />
               {kFormatter(sandbox.like_count)}
             </li>
