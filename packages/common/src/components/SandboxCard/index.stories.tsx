@@ -1,85 +1,50 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import SandboxCard, { Props } from './';
-import * as fake from './fixtures';
+import { Props } from './';
+import * as Fixtures from './fixtures';
 import { ThemeDecorator } from '../../stories/decorators';
 
 const stories = storiesOf('components/SandboxCard', module).addDecorator(
   ThemeDecorator
 );
 
-const createSandboxStory = ({
-  sandbox = fake.sandbox(),
-  selectSandbox = action('selectSandbox'),
-  small,
-  noHeight,
-  defaultHeight,
-  noMargin,
-}: Partial<Props>) => () => (
-  <SandboxCard
-    sandbox={sandbox}
-    selectSandbox={selectSandbox}
-    small={small}
-    noHeight={noHeight}
-    defaultHeight={defaultHeight}
-    noMargin={noMargin}
-  />
-);
+const defaultProps: Partial<Props> = {
+  selectSandbox: action('selectSandbox'),
+};
 
-stories.add('basic', createSandboxStory({}));
+stories.add('basic', () => <Fixtures.Basic {...defaultProps} />);
 
-stories.add('small', createSandboxStory({ small: true }));
+stories.add('small', () => <Fixtures.Small {...defaultProps} />);
 
-stories.add('no height', createSandboxStory({ noHeight: true }));
+stories.add('no height', () => <Fixtures.NoHeight {...defaultProps} />);
 
-stories.add('default height', createSandboxStory({ defaultHeight: 500 }));
+stories.add('default height', () => (
+  <Fixtures.DefaultHeight {...defaultProps} />
+));
 
-stories.add('no margin', createSandboxStory({ noMargin: true }));
+stories.add('no margin', () => <Fixtures.NoMargin {...defaultProps} />);
 
-stories.add('popular', createSandboxStory({ sandbox: fake.popularSandbox() }));
+stories.add('popular', () => <Fixtures.Popular {...defaultProps} />);
 
-stories.add(
-  'many tags',
-  createSandboxStory({ sandbox: fake.sandboxWithManyTags() })
-);
+stories.add('many tags', () => <Fixtures.ManyTags {...defaultProps} />);
 
-stories.add(
-  'long title',
-  createSandboxStory({ sandbox: fake.sandboxWithLongTitle() })
-);
+stories.add('long title', () => <Fixtures.LongTitle {...defaultProps} />);
 
-stories.add(
-  'long description',
-  createSandboxStory({
-    sandbox: fake.sandboxWithLongDescription(),
-  })
-);
+stories.add('long description', () => (
+  <Fixtures.LongDescription {...defaultProps} />
+));
 
-stories.add(
-  'null author',
-  createSandboxStory({
-    sandbox: fake.sandboxWithNullAuthor(),
-  })
-);
+stories.add('null author', () => <Fixtures.NullAuthor {...defaultProps} />);
 
-stories.add(
-  'undefined author',
-  createSandboxStory({
-    sandbox: fake.sandboxWithUndefinedAuthor(),
-  })
-);
+stories.add('undefined author', () => (
+  <Fixtures.UndefinedAuthor {...defaultProps} />
+));
 
-stories.add(
-  'null screenshot url',
-  createSandboxStory({
-    sandbox: fake.sandboxWithNullScreenshotUrl(),
-  })
-);
+stories.add('null screenshot url', () => (
+  <Fixtures.NullScreenshotUrl {...defaultProps} />
+));
 
-stories.add(
-  'undefined screenshot url',
-  createSandboxStory({
-    sandbox: fake.sandboxWithUndefinedScreenshotUrl(),
-  })
-);
+stories.add('undefined screenshot url', () => (
+  <Fixtures.UndefinedScreenshotUrl {...defaultProps} />
+));

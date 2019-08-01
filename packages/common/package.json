@@ -47,9 +47,11 @@
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.4",
+    "@codesandbox/template-icons": "^0.6.1",
     "@storybook/addon-actions": "^5.1.9",
     "@storybook/react": "^5.1.9",
     "@types/color": "0.12.1",
+    "@types/enzyme": "^3.10.3",
     "@types/humps": "^1.1.2",
     "@types/jest": "^24.0.9",
     "@types/lodash": "^4.14.123",
@@ -60,7 +62,9 @@
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.6",
     "cpx": "^1.5.0",
+    "enzyme": "^3.10.0",
     "jest": "^21.2.1",
+    "jest-cli": "^21.2.1",
     "rimraf": "^2.6.3",
     "typescript": "3.5.2"
   },
@@ -69,10 +73,15 @@
       "node_modules"
     ],
     "transform": {
-      "^.+\\.(j|t)s$": "babel-jest"
+      "^.+\\.(j|t)sx?$": "babel-jest"
     },
-    "modulePathIgnorePatterns": [
-      "lib"
+    "testRegex": "^.+\\.test\\.tsx$",
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "ts",
+      "tsx",
+      "json"
     ]
   }
 }
