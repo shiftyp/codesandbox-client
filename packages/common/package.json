@@ -14,10 +14,13 @@
     "test": "jest",
     "clean": "rimraf lib && yarn rimraf node_modules/@types/react-native",
     "start": "(yarn tsc --watch & yarn babel src --out-dir lib --watch & yarn cpx \"src/**/*.{css,svg,png,jpg}\" lib --watch)",
-    "start:storybook": "start-storybook",
+    "start:storybook": "start-storybook --port 6006",
     "build": "yarn clean && yarn tsc && yarn babel src --out-dir lib && yarn cpx \"src/**/*.{css,svg,png,jpg}\" lib",
     "build:dev": "yarn build",
-    "prepublish": "yarn build"
+    "prepublish": "yarn build",
+    "start:cypress": "npm run start:storybook & npm run open:cypress",
+    "open:cypress": "wait-on http://localhost:6006 && cypress open",
+    "install:cypress": "cypress install"
   },
   "dependencies": {
     "@babel/plugin-transform-flow-strip-types": "^7.0.0",
@@ -47,6 +50,7 @@
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.4",
+    "@cypress/webpack-preprocessor": "^4.1.0",
     "@storybook/addon-actions": "^5.1.9",
     "@storybook/react": "^5.1.9",
     "@types/color": "0.12.1",
@@ -60,9 +64,11 @@
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.6",
     "cpx": "^1.5.0",
+    "cypress": "^3.4.1",
     "jest": "^21.2.1",
     "rimraf": "^2.6.3",
-    "typescript": "3.5.2"
+    "typescript": "3.5.2",
+    "wait-on": "^3.3.0"
   },
   "jest": {
     "moduleDirectories": [
